@@ -4,7 +4,6 @@ on:
   push:
     branches:
     - master
-
 jobs:
 
   build:
@@ -13,11 +12,19 @@ jobs:
  
     steps:
     - uses: actions/checkout@v2
+    - name: Run SonarCloud
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - name: build-push
       uses: docker/build-push-action@v1
       with:
         username: ${{ secrets.DOCKER_SECRET }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         registry: docker.io
-        repository: sigalasf/ssc
+        repository: usabud/ssc
         tag_with_sha: true
+
+
+
