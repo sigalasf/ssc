@@ -23,7 +23,7 @@ jobs:
         username: ${{ secrets.DOCKER_SECRET }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         registry: docker.io
-        repository: usabud/ssc
+        repository: sigalasf/ssc
         tag_with_sha: true
 
 
